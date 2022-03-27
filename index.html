@@ -3,199 +3,204 @@
 <!--Darren Productions Presents: Impossible(le)-->
 <!--Inspired By Wordle-->
 <html>
-    <head>
-        <title>Imposible(le)</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale = 1.0">
-    </head>
+<head>
+  <title>Imposible(le)</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale = 1.0">
+</head>
 
-    <body>
-        <h1 id="title">Imposible(le)</h1>
-        <p><b>Rules: </b> You Have 5 Chances To Try To Guess The Game, But With A Few Twists.<br>
-<b>1: </b>You Can Not Know If The Position Of A Letter Is Correct Or Not.<br>
-<b>2: </b> Coming Soon...<br>
-<b>3: </b> Coming Soon...</p>
+<body>
+  <h1 id="title">Imposible(le)</h1>
+  <p><b>Rules: </b> You Have 5 Chances To Try To Guess The Game, But With A Few Twists.<br>
+    <b>1: </b>You Can Not Know If The Position Of A Letter Is Correct Or Not.<br>
+    <b>2: </b> Coming Soon...<br>
+    <b>3: </b> Coming Soon...</p>
 
-        <hr>
-        <form name="form_main">
-        <b>Compare Your Time With Friends!</b>
-  <div>
-    <span id="hour">00</span>:<span id="minute">00</span>:<span id="second">00</span>:<span id="millisecond">000</span>
-  </div>
+    <hr>
+    <form name="form_main">
+      <b>Compare Your Time With Friends!</b>
+      <div>
+        <span id="hour">00</span>:<span id="minute">00</span>:<span id="second">00</span>:<span id="millisecond">000</span>
+      </div>
 
 
-  <button type="button" name="start">Start</button>
-  <button type="button" name="pause">Pause</button>
-  <button type="button" name="reset">Reset</button>
-</form>
+      <button type="button" name="start">Start</button>
+      <button type="button" name="pause">Pause</button>
+      <button type="button" name="reset">Reset</button>
+    </form>
 
-<script>
+    <script>
     "use strict";
 
-let hour = 0;
-let minute = 0;
-let second = 0;
-let millisecond = 0;
+    let hour = 0;
+    let minute = 0;
+    let second = 0;
+    let millisecond = 0;
 
-let cron;
+    let cron;
 
-document.form_main.start.onclick = () => start();
-document.form_main.pause.onclick = () => pause();
-document.form_main.reset.onclick = () => reset();
+    document.form_main.start.onclick = () => start();
+    document.form_main.pause.onclick = () => pause();
+    document.form_main.reset.onclick = () => reset();
 
-function start() {
-  pause();
-  cron = setInterval(() => { timer(); }, 10);
-}
+    function start() {
+      pause();
+      cron = setInterval(() => { timer(); }, 10);
+    }
 
-function pause() {
-  clearInterval(cron);
-}
+    function pause() {
+      clearInterval(cron);
+    }
 
-function reset() {
-  hour = 0;
-  minute = 0;
-  second = 0;
-  millisecond = 0;
-  document.getElementById('hour').innerText = '00';
-  document.getElementById('minute').innerText = '00';
-  document.getElementById('second').innerText = '00';
-  document.getElementById('millisecond').innerText = '000';
-}
+    function reset() {
+      hour = 0;
+      minute = 0;
+      second = 0;
+      millisecond = 0;
+      document.getElementById('hour').innerText = '00';
+      document.getElementById('minute').innerText = '00';
+      document.getElementById('second').innerText = '00';
+      document.getElementById('millisecond').innerText = '000';
+    }
 
-function timer() {
-  if ((millisecond += 10) == 1000) {
-    millisecond = 0;
-    second++;
-  }
-  if (second == 60) {
-    second = 0;
-    minute++;
-  }
-  if (minute == 60) {
-    minute = 0;
-    hour++;
-  }
-  document.getElementById('hour').innerText = returnData(hour);
-  document.getElementById('minute').innerText = returnData(minute);
-  document.getElementById('second').innerText = returnData(second);
-  document.getElementById('millisecond').innerText = returnData(millisecond);
-}
+    function timer() {
+      if ((millisecond += 10) == 1000) {
+        millisecond = 0;
+        second++;
+      }
+      if (second == 60) {
+        second = 0;
+        minute++;
+      }
+      if (minute == 60) {
+        minute = 0;
+        hour++;
+      }
+      document.getElementById('hour').innerText = returnData(hour);
+      document.getElementById('minute').innerText = returnData(minute);
+      document.getElementById('second').innerText = returnData(second);
+      document.getElementById('millisecond').innerText = returnData(millisecond);
+    }
 
-function returnData(input) {
-  return input > 10 ? input : `0${input}`
-}
-</script>
-        <br>
-        <div id="board">
-        </div>
+    function returnData(input) {
+      return input > 10 ? input : `0${input}`
+    }
+  </script>
+  <br>
+  <div id="board">
+  </div>
 
-        <br>
-        <h1 id="answer"></h1>
-    </body>
+  <br>
+  <h1 id="answer"></h1>
+  <h1 id="winner"></h1>
+</body>
 </html>
 
 <style>
 
 body {
-    background-color: antiquewhite;
-        color: black;
-        font-family: Arial, Helvetica, sans-serif;
-        text-align: center;
+  background-color: antiquewhite;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
 }
 
 hr {
-    width: 675px;
+  width: 675px;
 }
 
 #title {
-    font-size: 36px;
-    font-weight: bold;
-    letter-spacing: 2px;
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
 #board {
-    width: 350px;
-    height: 310px;
-    margin: 0 auto;
-    margin-top: 3px;
-    display: flex;
-    flex-wrap: wrap;
+  width: 350px;
+  height: 310px;
+  margin: 0 auto;
+  margin-top: 3px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .tile {
-    /* Box */
-    border: 2px solid lightgray;
-    width: 60px;
-    height: 60px;
-    margin: 2.5px;
+  /* Box */
+  border: 2px solid lightgray;
+  width: 60px;
+  height: 60px;
+  margin: 2.5px;
 
-    /* Text */
-    color: black;
-    font-size: 36px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /* Text */
+  color: black;
+  font-size: 36px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .correct {
-    background-color: skyBlue;
-    color: white;
-    border-color: white;
+  background-color: skyBlue;
+  color: white;
+  border-color: white;
 }
 
 .present {
-    background-color: skyBlue;
-    color: white;
-    border-color: white;
+  background-color: skyBlue;
+  color: white;
+  border-color: white;
 }
 
 .absent {
-    background-color: #787C7E;
-    color: white;
-    border-color:white;
+  background-color: #787C7E;
+  color: white;
+  border-color:white;
 }
 
 
 .keyboard-row {
-    width: 400px;
+  width: 400px;
 
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .key-tile {
-    width: 36px;
-    height: 40px;
-    margin: 1px;
-    border: 1px solid lightgray;
+  width: 36px;
+  height: 40px;
+  margin: 1px;
+  border: 1px solid lightgray;
 
-    /* Text */
-    font-size: 20px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /* Text */
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .enter-key-tile {
-    width: 76px;
-    height: 40px;
-    margin: 1px;
-    border: 1px solid lightgray;
+  width: 76px;
+  height: 40px;
+  margin: 1px;
+  border: 1px solid lightgray;
 
-    /* Text */
-    font-size: 20px;
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  /* Text */
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #answer{
-    color: #FF0000;
+  color: #FF0000;
+}
+
+#winner{
+  color: #03AC13;
 }
 </style>
 
@@ -219,195 +224,192 @@ var word = wordList[Math.floor(Math.random()*wordList.length)].toUpperCase();
 console.log(word);
 
 window.onload = function(){
-    intialize();
+  intialize();
 }
 
 function intialize() {
 
-    // Create the game board
-    for (let r = 0; r < height; r++) {
-        for (let c = 0; c < width; c++) {
-            // <span id="0-0" class="tile">P</span>
-            let tile = document.createElement("span");
-            tile.id = r.toString() + "-" + c.toString();
-            tile.classList.add("tile");
-            tile.innerText = "";
-            document.getElementById("board").appendChild(tile);
-        }
+  // Create the game board
+  for (let r = 0; r < height; r++) {
+    for (let c = 0; c < width; c++) {
+      // <span id="0-0" class="tile">P</span>
+      let tile = document.createElement("span");
+      tile.id = r.toString() + "-" + c.toString();
+      tile.classList.add("tile");
+      tile.innerText = "";
+      document.getElementById("board").appendChild(tile);
     }
+  }
 
-    // Create the key board
-    let keyboard = [
-        ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
-        ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
-        ["Enter", "Z", "X", "C", "V", "B", "N", "M", "⌫" ]
-    ]
+  // Create the key board
+  let keyboard = [
+    ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
+    ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
+    ["Enter", "Z", "X", "C", "V", "B", "N", "M", "⌫" ]
+  ]
 
-    for (let i = 0; i < keyboard.length; i++) {
-        let currRow = keyboard[i];
-        let keyboardRow = document.createElement("div");
-        keyboardRow.classList.add("keyboard-row");
+  for (let i = 0; i < keyboard.length; i++) {
+    let currRow = keyboard[i];
+    let keyboardRow = document.createElement("div");
+    keyboardRow.classList.add("keyboard-row");
 
-        for (let j = 0; j < currRow.length; j++) {
-            let keyTile = document.createElement("div");
+    for (let j = 0; j < currRow.length; j++) {
+      let keyTile = document.createElement("div");
 
-            let key = currRow[j];
-            keyTile.innerText = key;
-            if (key == "Enter") {
-                keyTile.id = "Enter";
-            }
-            else if (key == "⌫") {
-                keyTile.id = "Backspace";
-            }
-            else if ("A" <= key && key <= "Z") {
-                keyTile.id = "Key" + key;
-            }
+      let key = currRow[j];
+      keyTile.innerText = key;
+      if (key == "Enter") {
+        keyTile.id = "Enter";
+      }
+      else if (key == "⌫") {
+        keyTile.id = "Backspace";
+      }
+      else if ("A" <= key && key <= "Z") {
+        keyTile.id = "Key" + key;
+      }
 
-            keyTile.addEventListener("click", processKey);
+      keyTile.addEventListener("click", processKey);
 
-            if (key == "Enter") {
-                keyTile.classList.add("enter-key-tile");
-            } else {
-                keyTile.classList.add("key-tile");
-            }
-            keyboardRow.appendChild(keyTile);
-        }
-        document.body.appendChild(keyboardRow);
+      if (key == "Enter") {
+        keyTile.classList.add("enter-key-tile");
+      } else {
+        keyTile.classList.add("key-tile");
+      }
+      keyboardRow.appendChild(keyTile);
     }
+    document.body.appendChild(keyboardRow);
+  }
 
 
-    // Listen for Key Press
-    document.addEventListener("keydown", (e) => {
-        processInput(e);
-    })
+  // Listen for Key Press
+  document.addEventListener("keydown", (e) => {
+    processInput(e);
+  })
 }
 
 function processKey() {
-    e = { "code" : this.id };
-    processInput(e);
+  e = { "code" : this.id };
+  processInput(e);
 }
 
 function processInput(e) {
-    if (gameOver) return;
+  if (gameOver) return;
 
-    // alert(e.code);
-    if ("KeyA" <= e.code && e.code <= "KeyZ") {
-        if (col < width) {
-            let currTile = document.getElementById(row.toString() + '-' + col.toString());
-            if (currTile.innerText == "") {
-                currTile.innerText = e.code[3];
-                col += 1;
-            }
-        }
+  // alert(e.code);
+  if ("KeyA" <= e.code && e.code <= "KeyZ") {
+    if (col < width) {
+      let currTile = document.getElementById(row.toString() + '-' + col.toString());
+      if (currTile.innerText == "") {
+        currTile.innerText = e.code[3];
+        col += 1;
+      }
     }
-    else if (e.code == "Backspace") {
-        if (0 < col && col <= width) {
-            col -=1;
-        }
-        let currTile = document.getElementById(row.toString() + '-' + col.toString());
-        currTile.innerText = "";
+  }
+  else if (e.code == "Backspace") {
+    if (0 < col && col <= width) {
+      col -=1;
     }
+    let currTile = document.getElementById(row.toString() + '-' + col.toString());
+    currTile.innerText = "";
+  }
 
-    else if (e.code == "Enter") {
-        update();
-    }
+  else if (e.code == "Enter") {
+    update();
+  }
 
-    if (!gameOver && row == height) {
-        gameOver = true;
-        document.getElementById("answer").innerText = "The Word Was " + word + " Refresh The Page To Try Again";
-    }
+  if (!gameOver && row == height) {
+    gameOver = true;
+    document.getElementById("answer").innerText = "The Word Was " + word + " Refresh The Page To Try Again";
+  }
 }
 
 function update() {
-    let guess = "";
-    document.getElementById("answer").innerText = "";
-    if(guess == word){
-        alert("Hi");
+  let guess = "";
+  document.getElementById("answer").innerText = "";
+
+  //string up the guesses into the word
+  for (let c = 0; c < width; c++) {
+    let currTile = document.getElementById(row.toString() + '-' + c.toString());
+    let letter = currTile.innerText;
+    guess += letter;
+  }
+
+  guess = guess.toLowerCase(); //case sensitive
+  console.log(guess);
+
+  if (!guessList.includes(guess)) {
+    document.getElementById("answer").innerText = "Not In Word List";
+    return;
+  }
+
+  //start processing guess
+  let correct = 0;
+
+  let letterCount = {}; //keep track of letter frequency, ex) KENNY -> {K:1, E:1, N:2, Y: 1}
+  for (let i = 0; i < word.length; i++) {
+    let letter = word[i];
+
+    if (letterCount[letter]) {
+      letterCount[letter] += 1;
+    }
+    else {
+      letterCount[letter] = 1;
+    }
+  }
+
+  console.log(letterCount);
+
+  //first iteration, check all the correct ones first
+  for (let c = 0; c < width; c++) {
+    let currTile = document.getElementById(row.toString() + '-' + c.toString());
+    let letter = currTile.innerText;
+
+    //Is it in the correct position?
+    if (word[c] == letter) {
+      currTile.classList.add("correct");
+
+      let keyTile = document.getElementById("Key" + letter);
+      keyTile.classList.remove("present");
+      keyTile.classList.add("correct");
+
+      correct += 1;
+      letterCount[letter] -= 1; //deduct the letter count
     }
 
-    //string up the guesses into the word
-    for (let c = 0; c < width; c++) {
-        let currTile = document.getElementById(row.toString() + '-' + c.toString());
-        let letter = currTile.innerText;
-        guess += letter;
+    if (correct == width) {
+      gameOver = true;
+      document.getElementById("winner").innerText = "Congrats! You Beat Impossible(le)!" ;
     }
+  }
 
-    guess = guess.toLowerCase(); //case sensitive
-    console.log(guess);
+  console.log(letterCount);
+  //go again and mark which ones are present but in wrong position
+  for (let c = 0; c < width; c++) {
+    let currTile = document.getElementById(row.toString() + '-' + c.toString());
+    let letter = currTile.innerText;
 
-    if (!guessList.includes(guess)) {
-        document.getElementById("answer").innerText = "Not In Word List";
-        return;
-    }
+    // skip the letter if it has been marked correct
+    if (!currTile.classList.contains("correct")) {
+      //Is it in the word?         //make sure we don't double count
+      if (word.includes(letter) && letterCount[letter] > 0) {
+        currTile.classList.add("present");
 
-    //start processing guess
-    let correct = 0;
-
-    let letterCount = {}; //keep track of letter frequency, ex) KENNY -> {K:1, E:1, N:2, Y: 1}
-    for (let i = 0; i < word.length; i++) {
-        let letter = word[i];
-
-        if (letterCount[letter]) {
-           letterCount[letter] += 1;
+        let keyTile = document.getElementById("Key" + letter);
+        if (!keyTile.classList.contains("correct")) {
+          keyTile.classList.add("present");
         }
-        else {
-           letterCount[letter] = 1;
-        }
+        letterCount[letter] -= 1;
+      } // Not in the word or (was in word but letters all used up to avoid overcount)
+      else {
+        currTile.classList.add("absent");
+        let keyTile = document.getElementById("Key" + letter);
+        keyTile.classList.add("absent")
+      }
     }
+  }
 
-    console.log(letterCount);
-
-    //first iteration, check all the correct ones first
-    for (let c = 0; c < width; c++) {
-        let currTile = document.getElementById(row.toString() + '-' + c.toString());
-        let letter = currTile.innerText;
-
-        //Is it in the correct position?
-        if (word[c] == letter) {
-            currTile.classList.add("correct");
-
-            let keyTile = document.getElementById("Key" + letter);
-            keyTile.classList.remove("present");
-            keyTile.classList.add("correct");
-
-            correct += 1;
-            letterCount[letter] -= 1; //deduct the letter count
-        }
-
-        if (correct == width) {
-            gameOver = true;
-            document.getElementById("answer").innerText = "Congrats! You Beat Impossible(le)!" ;
-        }
-    }
-
-    console.log(letterCount);
-    //go again and mark which ones are present but in wrong position
-    for (let c = 0; c < width; c++) {
-        let currTile = document.getElementById(row.toString() + '-' + c.toString());
-        let letter = currTile.innerText;
-
-        // skip the letter if it has been marked correct
-        if (!currTile.classList.contains("correct")) {
-            //Is it in the word?         //make sure we don't double count
-            if (word.includes(letter) && letterCount[letter] > 0) {
-                currTile.classList.add("present");
-
-                let keyTile = document.getElementById("Key" + letter);
-                if (!keyTile.classList.contains("correct")) {
-                    keyTile.classList.add("present");
-                }
-                letterCount[letter] -= 1;
-            } // Not in the word or (was in word but letters all used up to avoid overcount)
-            else {
-                currTile.classList.add("absent");
-                let keyTile = document.getElementById("Key" + letter);
-                keyTile.classList.add("absent")
-            }
-        }
-    }
-
-    row += 1; //start new row
-    col = 0; //start at 0 for new row
+  row += 1; //start new row
+  col = 0; //start at 0 for new row
 }
 </script>
 <!--End Of Code-->
