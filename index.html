@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--Darren Productions Presents: Impossible(le)-->
 <html>
@@ -114,7 +115,7 @@ hr {
 
 #board {
     width: 350px;
-    height: 420px;
+    height: 310px;
     margin: 0 auto;
     margin-top: 3px;
     display: flex;
@@ -125,7 +126,7 @@ hr {
     /* Box */
     border: 2px solid lightgray;
     width: 60px;
-    height: 70px;
+    height: 60px;
     margin: 2.5px;
 
     /* Text */
@@ -272,7 +273,7 @@ function intialize() {
         }
         document.body.appendChild(keyboardRow);
     }
-    
+
 
     // Listen for Key Press
     document.addEventListener("keydown", (e) => {
@@ -337,7 +338,7 @@ function update() {
         document.getElementById("answer").innerText = "Not In Word List";
         return;
     }
-    
+
     //start processing guess
     let correct = 0;
 
@@ -389,7 +390,7 @@ function update() {
             //Is it in the word?         //make sure we don't double count
             if (word.includes(letter) && letterCount[letter] > 0) {
                 currTile.classList.add("present");
-                
+
                 let keyTile = document.getElementById("Key" + letter);
                 if (!keyTile.classList.contains("correct")) {
                     keyTile.classList.add("present");
