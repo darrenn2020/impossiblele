@@ -60,6 +60,7 @@
       document.getElementById('minute').innerText = '00';
       document.getElementById('second').innerText = '00';
       document.getElementById('millisecond').innerText = '000';
+      clearInterval(cron);
     }
 
     function timer() {
@@ -402,7 +403,7 @@ function update() {
       else {
         currTile.classList.add("absent");
         let keyTile = document.getElementById("Key" + letter);
-        keyTile.classList.add("absent")
+        keyTile.classList.add("absent");
       }
     }
   }
