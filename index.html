@@ -31,7 +31,8 @@
           Type in your first guess and press the 'enter' button on your keyboard. You will see that the tiles have changed colours. If a tile colour is blue, then the letter in that tile is in the mystery word. If the tile is gray, then the letter in that tile is not in the mystery word.<br>
           Continue guessing to try to find the mystery word.<br>
           There is also a timer which can be used for fun.<br><br>
-          Be Careful! If all the letters are blue, it doesn't mean that you've won. If you have actually won, it will display a message stating that you have won.<br></p>
+          Be Careful! If all the letters are blue, it doesn't mean that you've won. If you have actually won, it will display a message stating that you have won.<br>
+          (Picture show below might be outdated)<br></p>
           <img src="impossiblelerules.jpg" alt="Rules" width="650" height="333">
         </div>
       </div>
@@ -131,7 +132,7 @@
 
       .btn {
         cursor: pointer;
-        background: #27ae60;
+        background: skyBlue;
         display: inline-block;
         padding: .5em 1em;
         color: #fff;
@@ -140,11 +141,11 @@
 
       .btn:hover,
       .btn:focus {
-        background: #2ecc71;
+        background: navy;
       }
 
       .btn:active {
-        background: #27ae60;
+        background: blue;
         box-shadow: 0 1px 2px rgba(0,0,0, .2) inset;
       }
       </style>
@@ -227,9 +228,11 @@
       <br>
       <h1 id="answer"></h1>
       <h1 id="winner"></h1>
+      <button onclick="location.reload();">New Word</button>
     </body>
     </html>
 
+    <!--Main Style Sheet-->
     <style>
 
     body {
@@ -260,6 +263,7 @@
 
     .tile {
       /* Box */
+      border-radius: 11px;
       border: 2px solid lightgray;
       width: 60px;
       height: 60px;
@@ -454,7 +458,7 @@
     if (!gameOver && row == height) {
       gameOver = true;
       clearInterval(cron);
-      document.getElementById("answer").innerText = "The Word Was " + word + " Refresh The Page To Try Again";
+      document.getElementById("answer").innerText = "The Word Was " + word + " Click The Button Below To Try Again";
     }
   }
 
@@ -514,7 +518,7 @@
       if (correct == width) {
         gameOver = true;
         clearInterval(cron);
-        document.getElementById("winner").innerText = "Congrats! You Beat Impossible(le)!" ;
+        document.getElementById("winner").innerText = "Congrats! You Beat Impossible(le)!";
       }
     }
 
