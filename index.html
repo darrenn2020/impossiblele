@@ -319,6 +319,7 @@ function processInput(e) {
 
   if (!gameOver && row == height) {
     gameOver = true;
+    clearInterval(cron);
     document.getElementById("answer").innerText = "The Word Was " + word + " Refresh The Page To Try Again";
   }
 }
@@ -378,6 +379,7 @@ function update() {
 
     if (correct == width) {
       gameOver = true;
+      clearInterval(cron);
       document.getElementById("winner").innerText = "Congrats! You Beat Impossible(le)!" ;
     }
   }
