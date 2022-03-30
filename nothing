@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE-edge">
+</head>
+<body>
+	<section>
+		<div class="card">
+			<div class="ip_address"></div>
+			<button id="btn">Click Here For A Surprise!</button>
+		</div>
+	</section>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	<script>
+		$(document).ready(function(){
+			$("#btn").click(function(){
+				$.getJSON("https://ipinfo.io", function(data){
+					$(".ip_address").text(data.ip)
+				})
+			})
+		})
+	</script>
+
+</body>
+</html>
