@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <!--Impossible(le)-->
 <!--This Game Is Not Related To The Game Wordle From The New York Times-->
@@ -17,8 +18,187 @@
 
     <p>
       <label class="btn" for="modal-1">Rules In Detail</label>
+      <label class="bt" for="joe-1">⚙️</label>
     </p>
 
+    <input class="joe-state" id="joe-1" type="checkbox" />
+    <div class="joe">
+      <label class="joe__bg" for="joe-1"></label>
+      <div class="joe__inner">
+        <label class="joe__close" for="joe-1"></label>
+        <center><h2><div id="d">Impossible(le) Rules</div></h2></center>
+        <center>
+              <button style="color: black" onclick="darkMode()">🌓Dark/Light Mode</button>
+		</center>
+<body>
+<br>
+<br>
+<center>
+		      <button onclick="activate(document.documentElement);">
+        <img src="https://cdn3.iconfinder.com/data/icons/ui-line-style-vol-1/32/wallet-2-512.png" width="20" height="20" /></button>
+</center>
+	<script>
+        var fullscreen = false;
+        function activate(ele) {
+          if (ele.requestFullscreen) {
+            if(fullscreen == false){
+              ele.requestFullscreen();
+              fullscreen = true;
+            }else{
+              if (document.exitFullscreen) {
+                document.exitFullscreen();
+                fullscreen = false;
+              }
+            }
+          }
+        }
+	</script>
+</body>
+
+</html>
+
+<script>
+function darkMode() {
+          var element = document.body;
+          element.classList.toggle("dark-mode");
+        }
+        </script>
+<style>
+      body {
+        padding: 25px;
+        background-color: antiquewhite;
+        color: black;
+      }
+
+      .dark-mode {
+        background-color: #292929;
+        color: white;
+      }
+
+      #d{
+          color: black;
+      }
+
+    </style>
+        </div>
+      </div>
+
+      <style>
+      button{
+        cursor: pointer;
+      }
+      .joe {
+        opacity: 0;
+        visibility: hidden;
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        text-align: left;
+        background: rgba(0,0,0, .9);
+        transition: opacity .25s ease;
+      }
+
+      .joe__bg {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        cursor: pointer;
+      }
+
+      .joe-state {
+        display: none;
+      }
+
+      .joe-state:checked + .joe {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .joe-state:checked + .joe .joe__inner {
+        top: 0;
+      }
+
+      .joe__inner {
+        transition: top .25s ease;
+        position: absolute;
+        top: -20%;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 50%;
+        margin: auto;
+        overflow: auto;
+        background: #fff;
+        border-radius: 5px;
+        padding: 1em 2em;
+        height: 50%;
+      }
+
+      .joe__close {
+        position: absolute;
+        right: 1em;
+        top: 1em;
+        width: 1.1em;
+        height: 1.1em;
+        cursor: pointer;
+      }
+
+      .joe__close:after,
+      .joe__close:before {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 1.5em;
+        background: #ccc;
+        display: block;
+        transform: rotate(45deg);
+        left: 50%;
+        margin: -3px 0 0 -1px;
+        top: 0;
+      }
+
+      .joe__close:hover:after,
+      .joe__close:hover:before {
+        background: #aaa;
+      }
+
+      .joe__close:before {
+        transform: rotate(-45deg);
+      }
+
+      @media screen and (max-width: 768px) {
+
+        .joe__inner {
+          width: 90%;
+          height: 90%;
+          box-sizing: border-box;
+        }
+      }
+
+      .bt {
+        cursor: pointer;
+        background: skyBlue;
+        display: inline-block;
+        padding: .5em 1em;
+        color: #fff;
+        border-radius: 3px;
+      }
+
+      .bt:hover,
+      .bt:focus {
+        background: navy;
+      }
+
+      .bt:active {
+        background: blue;
+        box-shadow: 0 1px 2px rgba(0,0,0, .2) inset;
+      }
+      </style>
+    </p>
 
     <input class="modal-state" id="modal-1" type="checkbox" />
     <div class="modal">
@@ -236,11 +416,8 @@
       <button onclick="location.reload();" width="25" heigh="25">New Word</button>
         <br>
         <br>
-      </body>
-      </html>
 
-      <!--Main Style Sheet-->
-      <style>
+<style>
 
       body {
         background-color: antiquewhite;
@@ -284,6 +461,7 @@
         justify-content: center;
         align-items: center;
       }
+
 
       .correct {
         background-color: skyBlue;
@@ -468,6 +646,7 @@
           gameOver = true;
           clearInterval(cron);
           document.getElementById("answer").innerText = "The Word Was " + word + " Click The Button Below To Try Again";
+          clearTimeout(joe);
         }
       }
 
@@ -528,6 +707,7 @@
             gameOver = true;
             clearInterval(cron);
             document.getElementById("winner").innerText = "Congrats! You Beat Impossible(le)!";
+            clearTimeout(joe);
           }
         }
 
@@ -537,7 +717,7 @@
           var currTile = document.getElementById(row.toString() + '-' + c.toString());
           var letter = currTile.innerText;
 
-          // skip the letter if it has been marked correct
+
           if (!currTile.classList.contains("correct")) {
             //Is it in the word?         //make sure we don't double count
             if (word.includes(letter) && letterCount[letter] > 0) {
@@ -556,7 +736,6 @@
             }
           }
         }
-
         row += 1; //start new row
         col = 0; //start at 0 for new row
       }
