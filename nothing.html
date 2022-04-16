@@ -41,164 +41,164 @@
 		<label class="joe__close" for="joe-1"></label>
 		<center><h2 id="d">Impossible(le) Rules</h2></center>
 		<p><div id="modeSwitcher">
-<input type="checkbox" class="checkbox" id="chk" />🌓
-<label class="label" for="chk"
-<i class="fas fa-moon"></i>
-<div class="ball"></div>
-</label>
-</div>
-
-<style>
-body.dark {
-background-color: #292929;
-color: white;
-padding: 25px;
-font-family: Arial, Helvetica, sans-serif;
-text-align: center;
-}
-body {
-background-color: antiquewhite;
-color: black;
-padding: 25px;
-font-family: Arial, Helvetica, sans-serif;
-text-align: center;
-}
-#d{
-color: black;
-}
-</style>
-<script>
-window.onload=function() {
-if(localStorage.darkMode=="true") {
-document.body.classList.toggle('dark');
-document.getElementById("chk").checked=true;
-}
-else {
-document.body.classList.toggle('light');
-}
-};
-document.getElementById("chk").addEventListener('change', () => {
-document.body.classList.toggle('dark');
-document.body.classList.toggle('light');
-localStorage.darkMode=(localStorage.darkMode=="true")?"false":"true";
-});
-</script>
-</p>
-		</div>
+			<input type="checkbox" class="checkbox" id="chk" />🌓
+			<label class="label" for="chk"
+			<i class="fas fa-moon"></i>
+			<div class="ball"></div>
+		</label>
 	</div>
 
 	<style>
-	button{
-		cursor: pointer;
+	body.dark {
+		background-color: #292929;
+		color: white;
+		padding: 25px;
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: center;
 	}
-	.joe {
-		opacity: 0;
-		visibility: hidden;
-		position: fixed;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		text-align: left;
-		background: rgba(0,0,0, .9);
-		transition: opacity .25s ease;
+	body {
+		background-color: antiquewhite;
+		color: black;
+		padding: 25px;
+		font-family: Arial, Helvetica, sans-serif;
+		text-align: center;
 	}
+	#d{
+		color: black;
+	}
+</style>
+<script>
+window.onload=function() {
+	if(localStorage.darkMode=="true") {
+		document.body.classList.toggle('dark');
+		document.getElementById("chk").checked=true;
+	}
+	else {
+		document.body.classList.toggle('light');
+	}
+};
+document.getElementById("chk").addEventListener('change', () => {
+	document.body.classList.toggle('dark');
+	document.body.classList.toggle('light');
+	localStorage.darkMode=(localStorage.darkMode=="true")?"false":"true";
+});
+</script>
+</p>
+</div>
+</div>
 
-	.joe__bg {
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		cursor: pointer;
-	}
+<style>
+button{
+	cursor: pointer;
+}
+.joe {
+	opacity: 0;
+	visibility: hidden;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	text-align: left;
+	background: rgba(0,0,0, .9);
+	transition: opacity .25s ease;
+}
 
-	.joe-state {
-		display: none;
-	}
+.joe__bg {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	cursor: pointer;
+}
 
-	.joe-state:checked + .joe {
-		opacity: 1;
-		visibility: visible;
-	}
+.joe-state {
+	display: none;
+}
 
-	.joe-state:checked + .joe .joe__inner {
-		top: 0;
-	}
+.joe-state:checked + .joe {
+	opacity: 1;
+	visibility: visible;
+}
+
+.joe-state:checked + .joe .joe__inner {
+	top: 0;
+}
+
+.joe__inner {
+	transition: top .25s ease;
+	position: absolute;
+	top: -20%;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 50%;
+	margin: auto;
+	overflow: auto;
+	background: #fff;
+	border-radius: 5px;
+	padding: 1em 2em;
+	height: 50%;
+}
+
+.joe__close {
+	position: absolute;
+	right: 1em;
+	top: 1em;
+	width: 1.1em;
+	height: 1.1em;
+	cursor: pointer;
+}
+
+.joe__close:after,
+.joe__close:before {
+	content: '';
+	position: absolute;
+	width: 2px;
+	height: 1.5em;
+	background: #ccc;
+	display: block;
+	transform: rotate(45deg);
+	left: 50%;
+	margin: -3px 0 0 -1px;
+	top: 0;
+}
+
+.joe__close:hover:after,
+.joe__close:hover:before {
+	background: #aaa;
+}
+
+.joe__close:before {
+	transform: rotate(-45deg);
+}
+
+@media screen and (max-width: 768px) {
 
 	.joe__inner {
-		transition: top .25s ease;
-		position: absolute;
-		top: -20%;
-		right: 0;
-		bottom: 0;
-		left: 0;
-		width: 50%;
-		margin: auto;
-		overflow: auto;
-		background: #fff;
-		border-radius: 5px;
-		padding: 1em 2em;
-		height: 50%;
+		width: 90%;
+		height: 90%;
+		box-sizing: border-box;
 	}
+}
 
-	.joe__close {
-		position: absolute;
-		right: 1em;
-		top: 1em;
-		width: 1.1em;
-		height: 1.1em;
-		cursor: pointer;
-	}
+.btn {
+	cursor: pointer;
+	background: skyBlue;
+	display: inline-block;
+	padding: .5em 1em;
+	color: #fff;
+	border-radius: 3px;
+}
 
-	.joe__close:after,
-	.joe__close:before {
-		content: '';
-		position: absolute;
-		width: 2px;
-		height: 1.5em;
-		background: #ccc;
-		display: block;
-		transform: rotate(45deg);
-		left: 50%;
-		margin: -3px 0 0 -1px;
-		top: 0;
-	}
+.btn:hover,
+.btn:focus {
+	background: navy;
+}
 
-	.joe__close:hover:after,
-	.joe__close:hover:before {
-		background: #aaa;
-	}
-
-	.joe__close:before {
-		transform: rotate(-45deg);
-	}
-
-	@media screen and (max-width: 768px) {
-
-		.joe__inner {
-			width: 90%;
-			height: 90%;
-			box-sizing: border-box;
-		}
-	}
-
-	.btn {
-		cursor: pointer;
-		background: skyBlue;
-		display: inline-block;
-		padding: .5em 1em;
-		color: #fff;
-		border-radius: 3px;
-	}
-
-	.btn:hover,
-	.btn:focus {
-		background: navy;
-	}
-
-	.btn:active {
-		background: blue;
-		box-shadow: 0 1px 2px rgba(0,0,0, .2) inset;
-	}
-	</style>
+.btn:active {
+	background: blue;
+	box-shadow: 0 1px 2px rgba(0,0,0, .2) inset;
+}
+</style>
