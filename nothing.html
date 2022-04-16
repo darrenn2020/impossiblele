@@ -57,12 +57,12 @@ function clickCounter() {
 </body>
 </html>
 
-<label class="btn" for="modal-1">Dark Mode Test</label>
-<input class="modal-state" id="modal-1" type="checkbox" />
-<div class="modal">
-	<label class="modal__bg" for="modal-1"></label>
-	<div class="modal__inner">
-		<label class="modal__close" for="modal-1"></label>
+<label class="btn" for="joe-1">Dark Mode Test</label>
+<input class="joe-state" id="joe-1" type="checkbox" />
+<div class="joe">
+	<label class="joe__bg" for="joe-1"></label>
+	<div class="joe__inner">
+		<label class="joe__close" for="joe-1"></label>
 		<center><h2 id="d">Impossible(le) Rules</h2></center>
 		<p><div id="modeSwitcher">
 <input type="checkbox" class="checkbox" id="chk" />🌓
@@ -115,7 +115,7 @@ localStorage.darkMode=(localStorage.darkMode=="true")?"false":"true";
 	button{
 		cursor: pointer;
 	}
-	.modal {
+	.joe {
 		opacity: 0;
 		visibility: hidden;
 		position: fixed;
@@ -128,7 +128,7 @@ localStorage.darkMode=(localStorage.darkMode=="true")?"false":"true";
 		transition: opacity .25s ease;
 	}
 
-	.modal__bg {
+	.joe__bg {
 		position: absolute;
 		top: 0;
 		right: 0;
@@ -137,20 +137,20 @@ localStorage.darkMode=(localStorage.darkMode=="true")?"false":"true";
 		cursor: pointer;
 	}
 
-	.modal-state {
+	.joe-state {
 		display: none;
 	}
 
-	.modal-state:checked + .modal {
+	.joe-state:checked + .joe {
 		opacity: 1;
 		visibility: visible;
 	}
 
-	.modal-state:checked + .modal .modal__inner {
+	.joe-state:checked + .joe .joe__inner {
 		top: 0;
 	}
 
-	.modal__inner {
+	.joe__inner {
 		transition: top .25s ease;
 		position: absolute;
 		top: -20%;
@@ -166,7 +166,7 @@ localStorage.darkMode=(localStorage.darkMode=="true")?"false":"true";
 		height: 50%;
 	}
 
-	.modal__close {
+	.joe__close {
 		position: absolute;
 		right: 1em;
 		top: 1em;
@@ -175,8 +175,8 @@ localStorage.darkMode=(localStorage.darkMode=="true")?"false":"true";
 		cursor: pointer;
 	}
 
-	.modal__close:after,
-	.modal__close:before {
+	.joe__close:after,
+	.joe__close:before {
 		content: '';
 		position: absolute;
 		width: 2px;
@@ -189,18 +189,18 @@ localStorage.darkMode=(localStorage.darkMode=="true")?"false":"true";
 		top: 0;
 	}
 
-	.modal__close:hover:after,
-	.modal__close:hover:before {
+	.joe__close:hover:after,
+	.joe__close:hover:before {
 		background: #aaa;
 	}
 
-	.modal__close:before {
+	.joe__close:before {
 		transform: rotate(-45deg);
 	}
 
 	@media screen and (max-width: 768px) {
 
-		.modal__inner {
+		.joe__inner {
 			width: 90%;
 			height: 90%;
 			box-sizing: border-box;
