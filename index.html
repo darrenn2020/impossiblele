@@ -30,8 +30,13 @@
         <center>
           <button style="color: black" onclick="darkMode()">🌓Dark/Light Mode</button>
           <p><button onclick="numWins()" type="button">Refresh Number Of Wins</button></p>
-          <p id="nolbozo"></p><br>
+          <p id="d">Number Of Wins You Have:</p><p id="nolbozo"></p><br>
           <button onclick="helpUser()">The Number Of Wins Is 'Undifined' or 'NaN'</button>
+          <style>
+            #nolbozo{
+              color: black;
+            }
+          </style>
           <script>
             function helpUser(){
               alert("Go To The Search Bar And Press The Lock Symbol Or The Text Saying 'Not secure' And Click It. Then, select 'Cookies'. Delete All The Cookies On The Website. Refresh The Page And Try Again. If It Is Still Not Working, Send A Complaint Through The Chatbot In The Corner.");
@@ -212,6 +217,7 @@
         <label class="modal__bg" for="modal-1"></label>
         <div class="modal__inner">
           <label class="modal__close" for="modal-1"></label>
+          <div id="d">
           <center><h2>Impossible(le) Rules</h2></center>
           <p>Impossible(le) is a fun word game, when you know how to play. If you don't know, it could be confusing. So let's learn how to play: <br>
             First, the CPU chooses a random 5-letter word. Your job is to guess that word.<br>
@@ -223,6 +229,7 @@
             (Picture show below might be outdated)<br></p>
             <img src="impossiblelerules.jpg" alt="Rules" width="650" height="333"><br>
             <p>This game is not related to the game <a href="https://www.nytimes.com/games/wordle/index.html">Wordle</a> From <i>The New York Times</i></p>
+          </div>
           </div>
         </div>
 
@@ -771,7 +778,7 @@
         numWins();
 
         function numWins() {
-          document.getElementById("nolbozo").innerHTML = "Number Of Wins You Have: " + localStorage.clickcount;
+          document.getElementById("nolbozo").innerHTML = localStorage.clickcount;
         }
         </script>
         <!--End Of Code-->
