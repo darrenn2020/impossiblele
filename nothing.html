@@ -36,36 +36,6 @@
 </body>
 </html>
 
-<!DOCTYPE html>
-<html>
-<body>
-<h2>LocalStorage Test</h2>
-
-<p><button onclick="clickCounter()" type="button">Click me!</button></p>
-
-<p>Number of clicks:</p>
-<p id="demo"></p>
-
-
-<script>
-clickCounter();
-
-function clickCounter() {
-  if (localStorage.clickcount) {
-    localStorage.clickcount = Number(localStorage.clickcount)+1;
-  } else {
-    localStorage.clickcount = 0;
-  }
-  document.getElementById("demo").innerHTML = localStorage.clickcount;
-}
-</script>
-
-</body>
-</html>
-<br>
-<br>
-<br>
-
 <label class="btn" for="joe-1">Dark Mode Test</label>
 <input class="joe-state" id="joe-1" type="checkbox" />
 <div class="joe">
